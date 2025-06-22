@@ -2,9 +2,7 @@
 -- TODO: Telescope: add live_grep_args
 -- TODO: Telescope: add telescope undo
 -- TODO: Blink LSP: add angular and typescript
--- TODO: Blink LSP: add CR for confirm
--- TODO: Blink LSP: add snippets
--- TODO Treesitter : add anagular to ensure_installed
+-- TODO: Treesitter : add angular to ensure_installed
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -638,19 +636,6 @@ require("lazy").setup({
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
-				-- clangd = {},
-				-- gopls = {},
-				-- pyright = {},
-				-- rust_analyzer = {},
-				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-				--
-				-- Some languages (like typescript) have entire language plugins that can be useful:
-				--    https://github.com/pmizio/typescript-tools.nvim
-				--
-				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				-- ts_ls = {},
-				--
-
 				lua_ls = {
 					-- cmd = { ... },
 					-- filetypes = { ... },
@@ -664,6 +649,29 @@ require("lazy").setup({
 							-- diagnostics = { disable = { 'missing-fields' } },
 						},
 					},
+				},
+				ts_ls = {
+					filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
+					-- You might need to configure this to find your node_modules for local TS versions
+					settings = {
+						typescript = {
+							tsdk = "node_modules/typescript/lib", -- Adjust if needed for workspace TS
+						},
+					},
+				},
+				html = {
+					filetypes = { "html", "angularhtml" }, -- 'angularhtml' might be a custom filetype you set
+				},
+				cssls = {
+					filetypes = { "css", "scss", "less" },
+				},
+				jsonls = {
+					filetypes = { "json", "jsonc" },
+					-- settings = {
+					-- 	json = {
+					-- 		schemas = require("schemastore.json").schemas(), -- For schema auto-detection
+					-- 	},
+					-- },
 				},
 			}
 
@@ -766,12 +774,12 @@ require("lazy").setup({
 					-- `friendly-snippets` contains a variety of premade snippets.
 					--    See the README about individual language/framework/plugin snippets:
 					--    https://github.com/rafamadriz/friendly-snippets
-					-- {
-					--   'rafamadriz/friendly-snippets',
-					--   config = function()
-					--     require('luasnip.loaders.from_vscode').lazy_load()
-					--   end,
-					-- },
+					{
+						"rafamadriz/friendly-snippets",
+						config = function()
+							require("luasnip.loaders.from_vscode").lazy_load()
+						end,
+					},
 				},
 				opts = {},
 			},
@@ -802,6 +810,7 @@ require("lazy").setup({
 				-- <c-k>: Toggle signature help
 				--
 				-- See :h blink-cmp-config-keymap for defining your own keymap
+				["<CR>"] = { "select_and_accept", "fallback" },
 				preset = "default",
 
 				-- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
@@ -992,6 +1001,16 @@ require("lazy").setup({
 			start = "🚀",
 			task = "📌",
 			lazy = "💤 ",
+		},
+		performance = {
+			rtp = {
+				-- disable some rtp plugins
+				disabled_plugins = {
+					"netrw",
+					"netrwPlugin",
+					"matchit",
+				},
+			},
 		},
 	},
 })
