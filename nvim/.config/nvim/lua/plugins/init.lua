@@ -67,15 +67,15 @@ return {
 		---@type render.md.UserConfig
 		opts = {},
 	},
-	{
-		"zk-org/zk-nvim",
-		config = function()
-			require("zk").setup({
-				-- See Setup section below
-			})
-			vim.api.nvim_create_user_command("ZkDailyNew", "ZkNew { dir = 'daily' }", {})
-		end,
-	},
+	-- {
+	-- 	"zk-org/zk-nvim",
+	-- 	config = function()
+	-- 		require("zk").setup({
+	-- 			-- See Setup section below
+	-- 		})
+	-- 		vim.api.nvim_create_user_command("ZkDailyNew", "ZkNew { dir = 'daily' }", {})
+	-- 	end,
+	-- },
 	{
 		"f-person/auto-dark-mode.nvim",
 		opts = {

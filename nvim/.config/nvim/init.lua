@@ -349,19 +349,19 @@ require("lazy").setup({
 					layout_config = {
 						horizontal = { width = 0.95, height = 0.95 },
 					},
-					pickers = {
-						find_files = {
-							path_display = { "smart" },
-							find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
-							hidden = true,
-						},
-						buffer = {
-							initial_mode = "normal",
-							path_display = { "tail" },
-							hidden = true,
-							sort_mru = true,
-							ignore_current_buffer = true,
-						},
+				},
+				pickers = {
+					find_files = {
+						path_display = { "smart" },
+						find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+						hidden = true,
+					},
+					buffers = {
+						initial_mode = "normal",
+						path_display = { "tail" },
+						hidden = true,
+						sort_mru = true,
+						ignore_current_buffer = true,
 					},
 				},
 				extensions = {
