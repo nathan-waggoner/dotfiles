@@ -22,7 +22,7 @@ vim.g.have_nerd_font = true
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = "a"
@@ -347,16 +347,29 @@ require("lazy").setup({
 						flex = true,
 					},
 					layout_config = {
-						horizontal = { width = 0.95, height = 0.95 },
+						width = 0.95,
+						height = 0.95,
 					},
 				},
 				pickers = {
 					find_files = {
+						previewer = false,
+						theme = "dropdown",
+						layout_config = {
+							width = 0.95,
+							height = 0.95,
+						},
 						path_display = { "smart" },
 						find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
 						hidden = true,
 					},
 					buffers = {
+						previewer = false,
+						theme = "dropdown",
+						layout_config = {
+							width = 0.95,
+							height = 0.95,
+						},
 						initial_mode = "normal",
 						path_display = { "tail" },
 						hidden = true,
