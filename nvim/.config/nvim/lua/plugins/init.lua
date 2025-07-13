@@ -1,5 +1,28 @@
 return {
-	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
+	{
+		"EdenEast/nightfox.nvim",
+		lazy = false,
+		priority = 1000,
+	},
+	{
+		"f-person/auto-dark-mode.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.g.light_theme = "dayfox"
+			vim.g.dark_theme = "nightfox"
+			require("auto-dark-mode").setup({
+				set_dark_mode = function()
+					vim.o.background = "dark"
+					vim.cmd.colorscheme(vim.g.dark_theme)
+				end,
+				set_light_mode = function()
+					vim.o.background = "light"
+					vim.cmd.colorscheme(vim.g.light_theme)
+				end,
+			})
+		end,
+	},
 	{
 		"nvim-tree/nvim-tree.lua",
 		version = "*",
@@ -76,19 +99,6 @@ return {
 	-- 		vim.api.nvim_create_user_command("ZkDailyNew", "ZkNew { dir = 'daily' }", {})
 	-- 	end,
 	-- },
-	{
-		"f-person/auto-dark-mode.nvim",
-		opts = {
-			set_dark_mode = function()
-				vim.cmd.colorscheme("gruvbox")
-				vim.o.background = "dark"
-			end,
-			set_light_mode = function()
-				vim.cmd.colorscheme("gruvbox")
-				vim.o.background = "light"
-			end,
-		},
-	},
 	{
 		"olimorris/codecompanion.nvim",
 		opts = {},

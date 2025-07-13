@@ -3,9 +3,9 @@ local config = wezterm.config_builder()
 local appearance = wezterm.gui.get_appearance()
 
 if appearance:find("Dark") then
-	config.color_scheme = "GruvboxDark"
+	config.color_scheme = "nightfox"
 else
-	config.color_scheme = "Gruvbox light, medium (base16)"
+	config.color_scheme = "dayfox"
 end
 
 config.hide_tab_bar_if_only_one_tab = true
